@@ -9,6 +9,7 @@ export async function main() {
   }
 }
 
+// static routes
 export const GET = async (req: Request, res: NextResponse) => {
   // console.log('GET /api/blog')
   try {

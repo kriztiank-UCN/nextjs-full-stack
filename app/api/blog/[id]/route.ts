@@ -5,6 +5,7 @@ import prisma from '@/prisma'
 /* first we are getting the ID then we are connecting to the database then we are fetching the post by id and if we don't have the post we are sending the
 response message "Not Found" and if we have the post then we are sending the response message that this time we found a post with a message of "Success" */
 
+// dynamic routes
 // Creating a Dynamic API Route Handler With GET Request
 export const GET = async (req: Request, res: NextResponse) => {
   try {
@@ -45,6 +46,7 @@ export const PUT = async (req: Request, res: NextResponse) => {
   }
 }
 
+// Creating A DELETE Handler to delete a blog
 export const DELETE = async (req: Request, res: NextResponse) => {
   try {
     // split the url to get the id from the second value in the array
