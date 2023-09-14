@@ -24,6 +24,25 @@ export const GET = async (req: Request, res: NextResponse) => {
   }
 }
 
-export const Put = async (req: Request, res: NextResponse) => {}
+// Creating A PUT Request to update Blog
+export const PUT = async (req: Request, res: NextResponse) => {
+  try {
+    // split the url to get the id from the second value in the array
+    const id = req.url.split('/blog/')[1]
+    // destructuring the data from request.body
+    const { title, description } = await req.json()
+    // connect to db with the main function
+    await main()
+    const post = await prisma.post.update({
+      data: { title, description },
+      where: { id },
+    })
+    return NextResponse.json({ message: 'Success', post }, { status: 200 })
+  } catch (error) {
+    return NextResponse.json({ message: 'Error', error }, { status: 500 })
+  } finally {
+    await prisma.$disconnect()
+  }
+}
 
 export const DELETE = async (req: Request, res: NextResponse) => {}
